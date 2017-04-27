@@ -39,15 +39,28 @@ if len(linklist) <= 0:
 linklist[0].click()
 driver.implicitly_wait(10) # 隐性等待，最长等30秒 
 
+selectLst = driver.find_elements_by_tag_name("SELECT")
+for i in range(len(selectLst)):
+    print "hehe"
+print "get select list"
+
 Select(driver.find_element_by_id("ctl00_MainContentPlaceHolder_ddl_Reports")).select_by_value('ForecastedTimeDetails')
 driver.implicitly_wait(10) # 隐性等待，最长等30秒 
+
 
 Select(driver.find_element_by_id("ctl00_MainContentPlaceHolder_ddl_EndDates_dropdownTimePeriod")).select_by_value('2017/03/31')
 driver.implicitly_wait(10) # 隐性等待，最长等30秒 
 
-dateselect = Select(driver.find_element_by_id("ctl00_MainContentPlaceHolder_ddl_StartDates_dropdownTimePeriod")).options()
+selectLst = driver.find_elements_by_tag_name("SELECT")
 
-Select(driver.find_element_by_id("ctl00_MainContentPlaceHolder_ddl_StartDates_dropdownTimePeriod")).select_by_value('2017/03/31')
+for i in range(len(selectLst)):
+    print selectLst[i].name
+    #selectLst[i].select_by_index(2)
+
+
+#dateselect = Select(driver.find_element_by_id("ctl00_MainContentPlaceHolder_ddl_StartDates_*")).options()
+#Select(driver.find_element_by_id("ctl00_MainContentPlaceHolder_ddl_StartDates_dropdownTimePeriod")).select_by_value('2017/03/31')
+
 driver.implicitly_wait(30) # 隐性等待，最长等30秒 
 
 
